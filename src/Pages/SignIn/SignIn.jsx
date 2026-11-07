@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { Alert, Box, Button, CircularProgress, IconButton, InputAdornment, Stack, TextField, Typography } from "@mui/material";
+import { Alert, Box, Button, CircularProgress, Divider, IconButton, InputAdornment, Stack, TextField, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import { ArrowForwardRounded, LockOutlined, PersonOutlineRounded, VisibilityOffRounded, VisibilityRounded } from "@mui/icons-material";
+import { ArrowForwardRounded, LockOutlined, PersonOutlineRounded, ShieldRounded, VisibilityOffRounded, VisibilityRounded } from "@mui/icons-material";
 
 import BrandMark from "../../components/BrandMark/BrandMark";
 import Tag from "../../components/Tag/Tag";
 import { saveSession } from "../../configurations/session";
 import { errorMessage, signIn } from "../Companies/index";
 
-// Platform owner sign-in. Company users sign in on the main app, not here.
+// Platform owner sign-in: one white card on a soft jade-lit page. Company users sign in on the main app.
 function SignIn() {
     const theme = useTheme();
     const navigate = useNavigate();
@@ -42,18 +42,42 @@ function SignIn() {
     const fieldSx = (theme) => ({ "& .MuiOutlinedInput-root": { minHeight: theme.login.fieldHeight } });
 
     return (
-        <Box sx={(theme) => ({ minHeight: "100dvh", display: "grid", placeItems: "center", px: 2, py: 6, backgroundColor: theme.palette.background.default })}>
-            <Box component="form" noValidate onSubmit={submit} sx={(theme) => ({ width: "100%", maxWidth: theme.platform.signInMaxWidth })}>
-                <Stack direction="row" spacing={1.5} sx={{ alignItems: "center", mb: 4 }}>
+        <Box
+            sx={(theme) => ({
+                minHeight: "100dvh",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                px: 2,
+                py: 6,
+                background: theme.platform.signIn.background,
+            })}
+        >
+            <Box
+                component="form"
+                noValidate
+                onSubmit={submit}
+                sx={(theme) => ({
+                    width: "100%",
+                    maxWidth: theme.platform.signInMaxWidth,
+                    p: theme.platform.signIn.cardPadding,
+                    borderRadius: theme.platform.signIn.cardRadius,
+                    border: theme.platform.signIn.cardBorder,
+                    boxShadow: theme.platform.signIn.cardShadow,
+                    backgroundColor: theme.palette.background.paper,
+                })}
+            >
+                <Stack direction="row" spacing={1.5} sx={{ alignItems: "center", justifyContent: "center", mb: 3.5 }}>
                     <BrandMark size={theme.login.brandMarkSize} showWordmark tone="light" />
                     <Tag label="Platform" color="primary" />
                 </Stack>
 
-                <Typography variant="h2" component="h1">
-                    Platform sign-in
+                <Typography variant="h4" component="h1" sx={{ textAlign: "center" }}>
+                    Sign in
                 </Typography>
-                <Typography variant="body2" sx={(theme) => ({ mt: 1, mb: 4, color: theme.palette.text.secondary })}>
-                    For the Pharmalyx team: create and manage customer companies. Company users sign in on the Pharmalyx app instead.
+                <Typography variant="body2" sx={(theme) => ({ mt: 0.75, mb: 3.5, textAlign: "center", color: theme.palette.text.secondary })}>
+                    Pharmalyx platform console
                 </Typography>
 
                 <Stack spacing={2.25}>
@@ -106,7 +130,17 @@ function SignIn() {
                         {busy ? "Signing in…" : "Sign in"}
                     </Button>
                 </Stack>
+
+                <Divider sx={{ my: 3 }} />
+                <Stack direction="row" spacing={1} sx={(theme) => ({ alignItems: "center", justifyContent: "center", color: theme.palette.text.secondary })}>
+                    <ShieldRounded sx={(theme) => ({ fontSize: theme.typography.body2.fontSize, color: theme.palette.primary.main })} />
+                    <Typography variant="caption">Secure sign-in · encrypted connection</Typography>
+                </Stack>
             </Box>
+
+            <Typography variant="caption" sx={(theme) => ({ mt: 3, color: theme.palette.text.secondary })}>
+                © {new Date().getFullYear()} Pharmalyx
+            </Typography>
         </Box>
     );
 }
