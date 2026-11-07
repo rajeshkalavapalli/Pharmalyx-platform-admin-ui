@@ -43,6 +43,7 @@ export function BandTile({ icon: Icon, label, value, caption }) {
                 borderRadius: theme.platform.band.radius / 1.5,
                 backgroundColor: theme.platform.band.tileBackground,
                 border: `1px solid ${theme.platform.band.tileBorder}`,
+                boxShadow: theme.platform.band.tileShadow,
             })}
         >
             <Stack direction="row" spacing={1} sx={{ alignItems: "center", mb: 1 }}>
@@ -69,6 +70,7 @@ function Band({ totals }) {
                 mb: theme.stat.gap,
                 borderRadius: theme.platform.band.radius,
                 background: theme.platform.band.background,
+                border: theme.platform.band.border,
                 boxShadow: theme.platform.band.shadow,
             })}
         >
@@ -346,6 +348,7 @@ export function CompanyUsageBand({ organisationId }) {
                 p: theme.platform.band.padding,
                 borderRadius: theme.platform.band.radius,
                 background: theme.platform.band.background,
+                border: theme.platform.band.border,
                 boxShadow: theme.platform.band.shadow,
             })}
         >

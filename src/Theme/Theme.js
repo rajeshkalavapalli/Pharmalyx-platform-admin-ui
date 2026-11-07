@@ -373,19 +373,23 @@ const PharmalyxTheme = createTheme({
         limitInputWidth: 140,
         navGap: 0.5,
         navActiveBackground: C.jadeWash,
-        // Overview band: dark ink with a jade glow (same look as the customer app's company overview).
+        // Overview band: light, white to jade wash with a soft glow (same look as the customer app's overview).
         band: {
-            background: `radial-gradient(620px 260px at 100% 0%, ${alpha(C.jadeGlow, 0.22)}, transparent 65%), radial-gradient(420px 220px at 0% 100%, ${alpha(C.jade, 0.2)}, transparent 70%), linear-gradient(160deg, ${C.inkSoft} 0%, ${C.ink} 62%)`,
+            background: `radial-gradient(700px 280px at 100% 0%, ${alpha(C.jadeGlow, 0.14)}, transparent 62%), radial-gradient(520px 240px at 0% 100%, ${alpha(C.jadeGlow, 0.08)}, transparent 70%), linear-gradient(180deg, ${C.paper} 0%, ${C.jadeWash} 100%)`,
+            border: `1px solid ${C.line}`,
             radius: 3,
             padding: { xs: 2.5, md: 3.5 },
-            text: C.white,
-            mutedText: alpha(C.white, 0.7),
-            faintText: alpha(C.white, 0.5),
-            divider: alpha(C.white, 0.12),
-            tileBackground: alpha(C.white, 0.06),
-            tileBorder: alpha(C.white, 0.1),
-            accent: C.jadeGlow,
-            shadow: SHADOW.lg,
+            text: C.ink,
+            mutedText: C.inkMuted,
+            faintText: C.inkFaint,
+            divider: C.line,
+            tileBackground: C.paper,
+            tileBorder: C.line,
+            tileHover: C.jadeWash,
+            tileShadow: SHADOW.xs,
+            accent: C.jade,
+            gold: C.goldDark,
+            shadow: SHADOW.md,
         },
         chartHeight: 170,
         chartBarRadius: 3,
@@ -393,6 +397,14 @@ const PharmalyxTheme = createTheme({
         skeleton: { band: 220, chart: 260 },
         searchWidth: { xs: "100%", sm: 220 },
         cardHoverShadow: SHADOW.md,
+        // Sign-in: soft jade glows on the page, one white card in the middle.
+        signIn: {
+            background: `radial-gradient(900px 480px at 15% -10%, ${alpha(C.jadeGlow, 0.16)}, transparent 60%), radial-gradient(700px 420px at 110% 110%, ${alpha(C.jade, 0.1)}, transparent 60%), ${C.bg}`,
+            cardPadding: { xs: 3, sm: 4.5 },
+            cardRadius: 3,
+            cardShadow: SHADOW.lg,
+            cardBorder: `1px solid ${C.line}`,
+        },
     },
 
     // Data Import Center (Administration > Data import).
