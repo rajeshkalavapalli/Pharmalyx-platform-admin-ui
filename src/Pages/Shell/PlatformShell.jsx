@@ -1,8 +1,13 @@
-import { Outlet, useNavigate } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 
 import { Box, Button, Stack, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import { LogoutRounded } from "@mui/icons-material";
+import { ApartmentRounded, InsightsRounded, LogoutRounded } from "@mui/icons-material";
+
+const NAV = [
+    { to: "/overview", label: "Overview", icon: InsightsRounded },
+    { to: "/companies", label: "Companies", icon: ApartmentRounded },
+];
 
 import BrandMark from "../../components/BrandMark/BrandMark";
 import Tag from "../../components/Tag/Tag";
@@ -41,6 +46,24 @@ function PlatformShell() {
                 <Stack direction="row" spacing={1.5} sx={{ alignItems: "center", minWidth: 0 }}>
                     <BrandMark size={theme.sidebarLayout.markSize} showWordmark tone="light" />
                     <Tag label="Platform" color="primary" />
+                    <Stack component="nav" direction="row" sx={(theme) => ({ gap: theme.platform.navGap, ml: { xs: 0.5, md: 2 } })}>
+                        {NAV.map(({ to, label, icon: Icon }) => (
+                            <Button
+                                key={to}
+                                component={NavLink}
+                                to={to}
+                                size="small"
+                                startIcon={<Icon />}
+                                sx={(theme) => ({
+                                    color: theme.palette.text.secondary,
+                                    "& .MuiButton-startIcon": { display: { xs: "none", sm: "inherit" } },
+                                    "&.active": { color: theme.palette.primary.main, backgroundColor: theme.platform.navActiveBackground },
+                                })}
+                            >
+                                {label}
+                            </Button>
+                        ))}
+                    </Stack>
                 </Stack>
                 <Stack direction="row" spacing={1.5} sx={{ alignItems: "center" }}>
                     {admin?.name && (

@@ -14,6 +14,7 @@ import Tag from "../../components/Tag/Tag";
 import { useSnackbar } from "../../components/Snackbar/SnackbarContext";
 import AdminPasswordDialog from "./AdminPasswordDialog";
 import UsageBar from "./UsageBar";
+import { CompanyUsageBand } from "../Overview/PlatformOverview";
 import { ACTION_LABEL, STATUS, errorMessage, formatDate, formatDateTime, getCompany, setCompanyStatus, updateCompany } from "./index";
 
 // Where company users sign in (the main Pharmalyx app).
@@ -242,6 +243,7 @@ function CompanyDetail() {
             ) : (
                 organisation && (
                     <Stack spacing={2}>
+                        <CompanyUsageBand organisationId={organisation.organisationId || organisationId} />
                         <Box sx={{ display: "grid", gap: 2, gridTemplateColumns: { xs: "1fr", md: "1fr 2fr" }, alignItems: "start" }}>
                             <LimitPanel key={`limit-${organisation.maxUsers}`} organisation={organisation} onSaved={setData} />
                             <DetailsPanel key={`details-${organisation.modifiedOn}`} organisation={organisation} onSaved={setData} />

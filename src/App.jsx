@@ -5,6 +5,7 @@ import PlatformShell from "./Pages/Shell/PlatformShell";
 import SignIn from "./Pages/SignIn/SignIn";
 import CompanyList from "./Pages/Companies/CompanyList";
 import CompanyDetail from "./Pages/Companies/CompanyDetail";
+import PlatformOverview from "./Pages/Overview/PlatformOverview";
 
 function RequireOwner({ children }) {
     return isSignedIn() ? children : <Navigate to="/" replace />;
@@ -14,7 +15,7 @@ function App() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={isSignedIn() ? <Navigate to="/companies" replace /> : <SignIn />} />
+                <Route path="/" element={isSignedIn() ? <Navigate to="/overview" replace /> : <SignIn />} />
                 <Route
                     element={
                         <RequireOwner>
@@ -22,6 +23,7 @@ function App() {
                         </RequireOwner>
                     }
                 >
+                    <Route path="/overview" element={<PlatformOverview />} />
                     <Route path="/companies" element={<CompanyList />} />
                     <Route path="/companies/:organisationId" element={<CompanyDetail />} />
                 </Route>

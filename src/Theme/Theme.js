@@ -364,7 +364,34 @@ const PharmalyxTheme = createTheme({
     reports: { tableMaxHeight: 560 },
 
     // Platform owner app (Pharmalyx-platform-admin-ui).
-    platform: { contentMaxWidth: 1180, headerHeight: 64, signInMaxWidth: 420, dialogMaxWidth: 640, usageBarHeight: 6, limitInputWidth: 140 },
+    platform: {
+        contentMaxWidth: 1180,
+        headerHeight: 64,
+        signInMaxWidth: 420,
+        dialogMaxWidth: 640,
+        usageBarHeight: 6,
+        limitInputWidth: 140,
+        navGap: 0.5,
+        navActiveBackground: C.jadeWash,
+        // Overview band: dark ink with a jade glow (same look as the customer app's company overview).
+        band: {
+            background: `radial-gradient(620px 260px at 100% 0%, ${alpha(C.jadeGlow, 0.22)}, transparent 65%), radial-gradient(420px 220px at 0% 100%, ${alpha(C.jade, 0.2)}, transparent 70%), linear-gradient(160deg, ${C.inkSoft} 0%, ${C.ink} 62%)`,
+            radius: 3,
+            padding: { xs: 2.5, md: 3.5 },
+            text: C.white,
+            mutedText: alpha(C.white, 0.7),
+            faintText: alpha(C.white, 0.5),
+            divider: alpha(C.white, 0.12),
+            tileBackground: alpha(C.white, 0.06),
+            tileBorder: alpha(C.white, 0.1),
+            accent: C.jadeGlow,
+            shadow: SHADOW.lg,
+        },
+        chartHeight: 170,
+        chartBarRadius: 3,
+        healthDot: 8,
+        skeleton: { band: 220, chart: 260 },
+    },
 
     // Data Import Center (Administration > Data import).
     dataImport: {

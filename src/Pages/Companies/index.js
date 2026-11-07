@@ -8,6 +8,7 @@ const patch = async (url, body) => (await api.patch(url, body)).data;
 
 export const signIn = (userName, password) => post("/platform/login", { userName, password });
 export const getCompanies = () => get("/platform/organisations");
+export const getOverview = () => get("/platform/overview");
 export const getCompany = (id) => get(`/platform/organisations/${id}`);
 export const suggestCode = (name) => get("/platform/organisations/suggest-code", { name });
 export const createCompany = (payload) => post("/platform/organisations", payload);
