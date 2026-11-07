@@ -29,7 +29,6 @@ function BrandPanel() {
         >
             <Stack direction="row" spacing={1.5} sx={{ alignItems: "center" }}>
                 <BrandMark size={theme.login.brandMarkSize} showWordmark tone="dark" />
-                <Tag label="Platform" color="primary" />
             </Stack>
 
             <Box sx={(theme) => ({ maxWidth: theme.login.headlineMaxWidth })}>
