@@ -31,7 +31,7 @@ function SignIn() {
         try {
             const session = await signIn(userName.trim(), password);
             saveSession(session);
-            navigate("/companies", { replace: true });
+            navigate("/overview", { replace: true });
         } catch (err) {
             setError(errorMessage(err, "Sign-in failed. Please try again."));
         } finally {
