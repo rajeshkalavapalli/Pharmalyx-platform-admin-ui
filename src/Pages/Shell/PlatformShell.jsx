@@ -18,6 +18,9 @@ function PlatformShell() {
     const theme = useTheme();
     const navigate = useNavigate();
     const admin = getAdmin();
+    // Names typed in a terminal can carry arrow-key escape codes: show only readable text.
+    // eslint-disable-next-line no-control-regex
+    const adminName = String(admin?.name || "").replace(/\x1b\[[0-9;]*[A-Za-z]/g, "").replace(/\[[0-9;]*[A-D]/g, "").replace(/[\x00-\x1f\x7f\u2261]/g, "").trim();
 
     const signOut = () => {
         clearSession();
@@ -66,9 +69,9 @@ function PlatformShell() {
                     </Stack>
                 </Stack>
                 <Stack direction="row" spacing={1.5} sx={{ alignItems: "center" }}>
-                    {admin?.name && (
+                    {adminName && (
                         <Typography variant="body2" sx={(theme) => ({ color: theme.palette.text.secondary, display: { xs: "none", sm: "block" } })}>
-                            {admin.name}
+                            {adminName}
                         </Typography>
                     )}
                     <Button size="small" startIcon={<LogoutRounded />} onClick={signOut}>

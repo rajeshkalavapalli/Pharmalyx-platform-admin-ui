@@ -391,6 +391,8 @@ const PharmalyxTheme = createTheme({
         chartBarRadius: 3,
         healthDot: 8,
         skeleton: { band: 220, chart: 260 },
+        searchWidth: { xs: "100%", sm: 220 },
+        cardHoverShadow: SHADOW.md,
     },
 
     // Data Import Center (Administration > Data import).
